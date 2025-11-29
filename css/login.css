@@ -1,0 +1,76 @@
+/* -------------------------------- estilo login ------------------------------------ 
+chikos ignoren el diseño feo aki, me dio sueño y lo hice rapido bai 
+*/
+body {
+    background: linear-gradient(135deg, #f3f3f3, #e9f1ff);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* q se vea centrada la tarjeta de login */
+.container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    background: white;
+}
+
+.card h2 {
+    font-weight: 600;
+    color: #333;
+}
+
+/*inputs */
+.form-control {
+    border-radius: 12px;
+    padding: 10px 14px;
+    border: 1px solid #ccd;
+}
+
+.form-control:focus {
+    border-color: #3e7838;
+    box-shadow: 0 0 4px rgb(60, 135, 100);
+}
+
+#btnIniciarSesion {
+    width: 100%;
+    background-color: #0c5541;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+#btnIniciarSesion:hover {
+    background-color: #7d8e4a;
+}
+
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
