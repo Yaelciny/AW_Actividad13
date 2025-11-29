@@ -2,7 +2,7 @@
 
 #inicio{
     height: 100vh;
-    background-image: url(../img/fondoEjemplo.jpg);
+    background-image: url(../img/fondoHeader.jpg);
     background-size: cover;
 }
 
@@ -11,12 +11,27 @@
 }
 
 .destacadas{
-    background-color: #141414   ;
+    background-color: #141414;
 }
 
 .creadores{
     background-color: #141414   ;
 }
+
+.card-creador {
+    transition: transform .3s ease, box-shadow .3s ease; /* con estala tarjeta se mueve (al hacer hover) la animación durará 0.3 segundos y sera smooth */
+    border-radius: 20px;
+}
+
+.card-creador:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+}
+
+.card-creador img {
+    border-radius: 15px;
+}
+
 
 .container-fluid{
     padding: 15px
