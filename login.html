@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,32 +11,33 @@
 
 <body>
     <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid px-5">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand px-5" href="index.html"><img src="" alt="logo" class="logo"></a>
-            </div>
-        </nav>
+        <div class="container-fluid px-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand px-5" href="index.html"><img src="" alt="logo" class="logo"></a>
+        </div>
+    </nav>
 
     <div class="container ">
         <div class="card">
 
             <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-            <form>
+            <form id="formLogin">
                 <div class="mb-3">
                     <label class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" >
+                    <input type="email" id="email" class="form-control" >
+
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Contraseña</label>
-                    <input type="password" class="form-control">
+                    <input type="password" id="password" class="form-control">
                 </div>
 
-                <button type="submit" id="btnIniciarSesion" >Entrar</button>
+                <button type="submit" id="btnIniciarSesion">Entrar</button>
 
                 <div class="text-center mt-3">
                     <a href="#">¿Olvidaste tu contraseña?</a>
@@ -47,7 +49,16 @@
         </div>
     </div>
 
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Proyecto Escolar - Equipo Ghibli</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
+
 </html>
