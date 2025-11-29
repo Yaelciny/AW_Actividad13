@@ -48,7 +48,7 @@ form.addEventListener('submit',function(e){
         //servirá para páginas exclusivas de usuariios logueados.
         localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioCargado));
         setTimeout(() => {
-            window.location.href = "peliculas.html";   // Pendiente de cambiar a donde redirecciona
+            window.location.href = "perfil.html";   // Pendiente de cambiar a donde redirecciona
         }, 1000);
         //para probar
         alert ('Inicio de sesión exitoso');
