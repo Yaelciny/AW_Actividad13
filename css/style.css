@@ -24,7 +24,7 @@
 .card-creador {
     transition: transform .3s ease, box-shadow .3s ease; /* con estala tarjeta se mueve (al hacer hover) la animación durará 0.3 segundos y sera smooth */
     border-radius: 20px;
-}
+}   
 
 .card-creador:hover {
     transform: translateY(-8px);
@@ -50,3 +50,11 @@
     object-fit: cover;
 }
 
+.card-destacada {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card-destacada:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 225px rgba(0, 0, 0, 0.35);
+}
