@@ -1,12 +1,5 @@
-const btnFavorito = document.querySelectorAll('.btnFavorito');
-//script parea mostrar las peliculas pendiente
-
-//script para marcar fav
-function marcarFavorito (){
-
-}
-
-function validarUsuario (){
+        //script pequeño solo para mostrar nombre de usuario o no
+    function validarUsuario (){
     let usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
     const btnLogin = document.getElementById('btnLogin');
 

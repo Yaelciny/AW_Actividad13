@@ -23,7 +23,7 @@ function cerrarSesion (){
 }
 
 function mostrarFavoritos (){
-    //pendiente
+    //pendiente 
 }
 
 document.addEventListener ("DOMContentLoaded",validarUsuario);
