@@ -5,12 +5,13 @@ function validarUsuario (){
 
     if (usuarioLogueado === null){
         alert ('Debes iniciar sesión para acceder a este apartado.');
-         setTimeout(() => {
+        setTimeout(() => {
             window.location.href = "login.html"; 
         }, 1000);
     } else {
         //para probar si funciona o no
          console.log("Usuario autenticado:", usuarioLogueado);
+         document.getElementById('nombreUsuario').textContent = usuarioLogueado.nombre;
     }
 }
 
@@ -19,6 +20,10 @@ function cerrarSesion (){
     setTimeout(() => {
             window.location.href = "login.html"; 
         }, 1000);
+}
+
+function mostrarFavoritos (){
+    //pendiente
 }
 
 document.addEventListener ("DOMContentLoaded",validarUsuario);
