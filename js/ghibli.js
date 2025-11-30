@@ -177,9 +177,12 @@ function guardarFavoritos (id){
     let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
     let favUsuario = favoritos[usuarioLogueado.email] || [];
 
-    if (!favUsuario.includes(id)){
-      favUsuario.push(id);
+    if (favUsuario.includes(id)){
+      alert('Ya está en favoritos.');
+      return;
     }
+
+    favUsuario.push(id);
 
     //guardamos el favorito
     favoritos[usuarioLogueado.email] = favUsuario
@@ -216,5 +219,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.addEventListener('favoritos:cambiaron', () => renderizarFavoritosEnPerfil());
     }
 });
-
-
