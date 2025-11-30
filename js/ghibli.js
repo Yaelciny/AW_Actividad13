@@ -71,6 +71,7 @@ function renderizarListadoPeliculas(peliculas) {
     `;
     });
     contenedor.innerHTML = html;
+    botonFavorito();
 }
 
 //Carga de las peliculas destacadas en index.html
@@ -97,6 +98,20 @@ function renderizarCarrusel(peliculas) {
     });
     inner.innerHTML = html;
 }
+
+//para obtener favoritos con validacion
+window.FavoritosGhibli = {
+    obtenerFavoritosUsuario(email) {
+        const favs = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
+        return favs[email] || [];
+    },
+
+    //esto valida si ya esta en favoritos
+    esFavorita(email, idPeli) {
+        const lista = this.obtenerFavoritosUsuario(email);
+        return lista.includes(idPeli);
+    }
+};
 
 //Se cargan las peliculas favoritas en perfil
 async function renderizarFavoritosEnPerfil() {
@@ -150,6 +165,40 @@ async function renderizarFavoritosEnPerfil() {
   contenedor.innerHTML = html;
 }
 
+//funcion de agregar faoritos
+function guardarFavoritos (id){
+  const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
+
+   if (!usuarioLogueado){
+    alert ('Debes iniciar sesión para agregar favoritos.');
+    return;
+   }
+
+    let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
+    let favUsuario = favoritos[usuarioLogueado.email] || [];
+
+    if (!favUsuario.includes(id)){
+      favUsuario.push(id);
+    }
+
+    //guardamos el favorito
+    favoritos[usuarioLogueado.email] = favUsuario
+    localStorage.setItem('favoritosGhibli',JSON.stringify(favoritos));
+    alert ("Favorito agregado con éxito!");
+}
+
+//se lo asignamos al boton
+function botonFavorito(){
+  const btnFav = document.querySelectorAll(".fav-toggle");
+
+  btnFav.forEach (btn=>{
+    btn.addEventListener('click', () => {
+    const id = btn.dataset.id;
+    guardarFavoritos(id);
+  });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const peliculas = await obtenerPeliculas();
 
@@ -167,3 +216,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.addEventListener('favoritos:cambiaron', () => renderizarFavoritosEnPerfil());
     }
 });
+
+

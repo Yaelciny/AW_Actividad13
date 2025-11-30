@@ -21,9 +21,6 @@ function cerrarSesion (){
         }, 1000);
 }
 
-function mostrarFavoritos (){
-    //pendiente 
-}
 
 document.addEventListener ("DOMContentLoaded",validarUsuario);
 
