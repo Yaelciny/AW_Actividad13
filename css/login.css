@@ -2,38 +2,48 @@
 chikos ignoren el diseño feo aki, me dio sueño y lo hice rapido bai 
 */
 body {
-    background: linear-gradient(135deg, #f3f3f3, #e9f1ff);
-    font-family: 'Poppins', sans-serif;
+    background: #F0FFF4;
+    font-family: 'Georgia', serif;
+    color: #4A4A4A;
 }
 
 /* q se vea centrada la tarjeta de login */
 .container {
-    min-height: 80vh;
+     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .card {
-    width: 100%;
-    max-width: 420px;
-    padding: 40px 30px;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-    background: white;
+    background: #FFFAEE;
+    width: 380px;
+    padding: 50px 40px;
+    border-radius: 18px;;
+    box-shadow: 0 8px 20px rgba(74, 74, 74, 0.1);
+    text-align: center;
+    border: 1px solid #E0E0E0;
 }
 
 .card h2 {
+    color: #5B4636;
+    font-size: 30px;
     font-weight: 600;
-    color: #333;
+    margin-bottom: 25px;
+    letter-spacing: .5px ;
 }
 
 /*inputs */
 .form-control {
-    border-radius: 12px;
-    padding: 10px 14px;
-    border: 1px solid #ccd;
+     width: 100%;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 2px solid #B8C8B5;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease; /*transición suave al enfocar*/
 }
 
 .form-control:focus {
@@ -42,24 +52,31 @@ body {
 }
 
 #btnIniciarSesion {
-    width: 100%;
-    background-color: #0c5541;
-    color: white;
-    border: none;
-    padding: 12px;
+     width: 100%;
+    padding: 13px;
     font-size: 16px;
+    background-color: #5E8A7E;
+    color: #FFFFFF;
+    border: none;
     border-radius: 12px;
-    transition: 0.2s;
+    cursor: pointer;
+    transition: .25s ease;
+    font-weight: 600;
 }
 
 #btnIniciarSesion:hover {
-    background-color: #7d8e4a;
+     background-color: #3F6D63;
+    transform: scale(1.02);
 }
 
 
 a {
+    display: block;
+    margin-top: 18px;
+    color: #C59E5F;
+    font-size: 14px;
     text-decoration: none;
-    color: #000000;
+    font-weight: 500;
 }
 
 a:hover {
