@@ -49,7 +49,7 @@ function renderizarListadoPeliculas(peliculas) {
     const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
     let html = '';
     peliculas.forEach(p => {
-        const titulo_romaji = p.original_title_romanised || p.original_title || p.title;
+        const titulo_romaji = p.original_title || p.title;
         const titulo_traducido = titulos_es[p.title] || p.title;
         const posterUrl = obtenerUrlImagenDesdeApi(p);
         //Validacion de pelicula favorita - pendiente logica de favoritos
@@ -84,7 +84,7 @@ function renderizarCarrusel(peliculas) {
     let html = '';
     slides.forEach((p, idx) => {
         const activo = idx === 0 ? 'active' : '';
-        const titulo_romaji = p.original_title_romanised || p.original_title || p.title;
+        const titulo_romaji = p.original_title || p.title;
         const titulo_traducido = titulos_es[p.title] || p.title;
         const posterUrl = obtenerUrlImagenDesdeApi(p);
 
@@ -139,7 +139,7 @@ async function renderizarFavoritosEnPerfil() {
 
   let html = "";
   favoritas.forEach(p => {
-    const titulo_romaji = p.original_title_romanised || p.original_title || p.title;
+    const titulo_romaji = p.original_title || p.title;
     const titulo_traducido = titulos_es[p.title] || p.title;
     const posterUrl = obtenerUrlImagenDesdeApi(p);
 
