@@ -22,6 +22,5 @@ function cerrarSesion (){
         }, 500); //500 milisegundos
 }
 
-
 document.addEventListener ("DOMContentLoaded",validarUsuario);
 
