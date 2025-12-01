@@ -1,3 +1,69 @@
+#navbar{
+    background-color: #212529;
+    color: white;
+    align-items: end;
+}
+
+header{
+    background: url(../img/fondoLogin.jpg);
+    padding: 10px 0;
+    text-align: center;
+}
+
 body{
-    background: ;
+    background: #141414 ;
+    align-items: center;
+}
+
+h1{
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Segoe UI';
+    margin-top: 20px;
+}
+#pHeader{
+    color: white;
+    font-family: 'Segoe UI';
+}
+
+#listaPeliculas, #listaFavoritos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.card{
+    background: #212529;
+    color: white;
+    padding: 50px;
+    border: none;
+    display: block;
+    border-radius: 20px;
+}
+.card h3{
+    color: #f2e8cf;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.card h4{
+    color: #90b4ce;
+    font-size: 1.05rem;  /* más chico que el h3 */
+    font-weight: 500;
+}
+.card p{
+    color: #a6a6a6;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 10px;
+}   
+.card img{
+    width: 250px;
+    height: 150px;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
 }
