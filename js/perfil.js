@@ -14,6 +14,7 @@ function validarUsuario (){
     }
 }
 
+//aqui falta asignarlo a un boton q aun no existe
 function cerrarSesion (){
     localStorage.removeItem('usuarioLogueado');
     setTimeout(() => {

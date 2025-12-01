@@ -179,20 +179,23 @@ function guardarFavoritos (id){
     let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
     let favUsuario = favoritos[usuarioLogueado.email] || [];
 
+    //verificamos si ya está en favorito usando el id de la peli
     if (favUsuario.includes(id)){
       alert('Ya está en favoritos.');
       return;
     }
 
+    //en caso de que no, entonces se agrega a la lista en base al id de la peli
     favUsuario.push(id);
 
-    //guardamos el favorito
+    //guardamos el favorito en base el usario (su email)
     favoritos[usuarioLogueado.email] = favUsuario
     localStorage.setItem('favoritosGhibli',JSON.stringify(favoritos));
-    alert ("Favorito agregado con éxito!");
+    alert ("¡Favorito agregado con éxito!");
 }
 
-//se lo asignamos al boton
+//En esta función, básicamente buscamos el id del botón que se presionó para 
+//usarlo en la función de guardarfav
 function botonFavorito(){
   const btnFav = document.querySelectorAll(".fav-toggle");
 
@@ -200,6 +203,7 @@ function botonFavorito(){
     btn.addEventListener('click', () => {
     btn.classList.remove('bi-star');
     btn.classList.add('bi-star-fill');
+    //se usa data debido a cómo está definido: 'data-id="${p.id}"'
     const id = btn.dataset.id;
     guardarFavoritos(id);
   });
