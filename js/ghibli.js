@@ -45,13 +45,15 @@ function obtenerUrlImagenDesdeApi(pelicula) {
 function renderizarListadoPeliculas(peliculas) {
     const contenedor = document.getElementById('listaPeliculas');
     if (!contenedor) return;
+
+    const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
     let html = '';
     peliculas.forEach(p => {
         const titulo_romaji = p.original_title_romanised || p.original_title || p.title;
         const titulo_traducido = titulos_es[p.title] || p.title;
         const posterUrl = obtenerUrlImagenDesdeApi(p);
         //Validacion de pelicula favorita - pendiente logica de favoritos
-        const esFav = (window.FavoritosGhibli && window.FavoritosGhibli.esFavorita(p.id)) || false;
+        const esFav = (window.FavoritosGhibli && window.FavoritosGhibli.esFavorita(usuarioLogueado?.email,p.id)) || false;
         const claseEstrella = esFav ? 'bi-star-fill' : 'bi-star';
 
         html += `
@@ -196,6 +198,8 @@ function botonFavorito(){
 
   btnFav.forEach (btn=>{
     btn.addEventListener('click', () => {
+    btn.classList.remove('bi-star');
+    btn.classList.add('bi-star-fill');
     const id = btn.dataset.id;
     guardarFavoritos(id);
   });
