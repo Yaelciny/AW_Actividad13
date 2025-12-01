@@ -53,7 +53,7 @@ form.addEventListener('submit',function(e){
         //para probar
         alert ('Inicio de sesión exitoso');
     } else {
-        alert ('Usuarios no Encontrado. Vuelva a Intentar');
+        alert ('Usuario no Encontrado. Vuelva a Intentar');
     }
 
 

@@ -26,6 +26,11 @@
                     <li class="nav-item px-2">
                         <a class="btn btn-outline-success" href="login.html" id="btnLogin">Iniciar Sesión</a>
                     </li>
+                    <!--Habria pensando cuando ya inicie sesion en vez de aparecer el boton
+                    Aparezca el noma-->
+                    <li class="nav-item px-1">
+                        <h4><span id="nombreUsuario">(Nombre del usuario)</span></h4>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,23 +43,8 @@
 
     <section id="catalogo-peliculas">
 
-        <div id="listaPeliculas" class="p-5">
-
-            <!--Ejemplo de como podria ser una card visualizar las peliculas-->
-
-            <div class="card col-md-3">
-                <small class=" m-2 mx-5 text-end">score</small>
-                <img src="..." class="card-img-top" alt="Imagen de la pelicula">
-                <div class="card-body">
-                    <h3>Pelicula titulo</h3>
-                    <h4>Pelicua titulo original</h4>
-                    <p>Descripción de la pelicula</p>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <small>anio de la pelicula</small>
-                            <i class="btn btn-warning bi bi-star-fill p-1"></i>
-                    </div>
-                </div>
-            </div>
+        <div id="listaPeliculas" class="p-5 row">
+            <!--Ahora se insertan desde js aqui-->
         </div>
 
     </section>
@@ -65,8 +55,8 @@
             <p class="mb-0">&copy; 2025 Proyecto Escolar - Equipo Ghibli</p>
         </div>
     </footer>
-
-
+<script src="js/validacion.js"></script>
+<script src="js/ghibli.js"></script>
 </body>
 
 </html>
