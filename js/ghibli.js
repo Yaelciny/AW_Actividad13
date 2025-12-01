@@ -90,7 +90,7 @@ function renderizarCarrusel(peliculas) {
 
         html += `
       <div class="carousel-item ${activo}">
-        <img src="${posterUrl}" loading="lazy" class="d-block w-100" alt="${escapar(titulo_romaji)}">
+        <img src="${posterUrl}" loading="lazy" class="d-block} w-auto" alt="${escapar(titulo_romaji)}">
         <div class="carousel-caption d-none d-md-block">
           <h5>${escapar(titulo_romaji)}</h5>
           <p>${escapar(titulo_traducido)}</p>
