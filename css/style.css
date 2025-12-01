@@ -1,5 +1,8 @@
 /* -------------------------------- estilo index ------------------------------------  */
 
+.navbar{
+    background-color: #212529;
+}
 #inicio{
     height: 100vh;
     background-image: url(../img/fondoHeader.jpg);
@@ -67,7 +70,7 @@
 }
 .carousel-item img {
     width: 100%; 
-    height: 400px;
+    height: 600px;
     object-fit: cover; /**para que la imagen no se deforme */
     border-radius: 20px;
 }
