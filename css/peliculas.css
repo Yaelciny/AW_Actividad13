@@ -1,6 +1,6 @@
 #navbar{
     background-color: #212529;
-    color: rgb(184, 105, 105);
+    color: rgb(255, 255, 255);
     align-items: end;
 }
 
@@ -30,7 +30,7 @@ body{
 
 
 
-h1{
+h1, h3{
     color: #ffffff;
     font-family: 'Segoe UI';
     margin-top: 20px;

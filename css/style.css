@@ -2,6 +2,8 @@
 
 .navbar{
     background-color: #212529;
+    color: rgb(255, 255, 255);
+    align-items: end;
 }
 #inicio{
     height: 100vh;

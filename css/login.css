@@ -2,7 +2,7 @@
 chikos ignoren el diseño feo aki, me dio sueño y lo hice rapido bai 
 */
 body {
-    background: #F0FFF4;
+    background: #141414;
     font-family: 'Georgia', serif;
     color: #4A4A4A;
     min-height: 100vh;
@@ -22,6 +22,7 @@ body {
     text-align: center;
     border: 1px solid #E0E0E0;
     margin: 0 auto; 
+    box-shadow: 0 10px 20px #5d8a7e6f;
 }
 
 .card h2 {
