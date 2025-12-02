@@ -1,4 +1,4 @@
-//document.getElementById('btnCerrar').addEventListener("click",cerrarSesion);
+document.getElementById('btnCerrar').addEventListener("click",cerrarSesion);
 
 function validarUsuario (){
     let usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
@@ -14,13 +14,13 @@ function validarUsuario (){
     }
 }
 
+//funcion de cerrar sesión
 function cerrarSesion (){
     localStorage.removeItem('usuarioLogueado');
     setTimeout(() => {
             window.location.href = "login.html"; 
-        }, 1000);
+        }, 500); //500 milisegundos
 }
-
 
 document.addEventListener ("DOMContentLoaded",validarUsuario);
 
