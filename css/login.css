@@ -1,6 +1,13 @@
 /* -------------------------------- estilo login ------------------------------------ 
 chikos ignoren el diseño feo aki, me dio sueño y lo hice rapido bai 
 */
+
+.navbar{
+    background-color: #141414;
+    color: rgb(255, 255, 255);
+    align-items: end;
+}
+
 body {
     background: #a6d0c2;
     font-family: 'Georgia', serif;
@@ -23,7 +30,7 @@ img{
     box-shadow: 0 8px 20px rgba(74, 74, 74, 0.1);
     text-align: center;
     border: 1px solid #EBE3D3;
-    margin: 0 auto; 
+    margin: 80px auto 0 auto;
     box-shadow: 0 10px 25px rgba(78, 112, 86, 0.25);
 }
 
