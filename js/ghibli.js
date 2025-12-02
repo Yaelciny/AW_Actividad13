@@ -17,7 +17,11 @@ const titulos_es = {
   "The Cat Returns": "El regreso del gato",
   "Arrietty": "Arrietty y el mundo de los diminutos",
   "Tales from Earthsea": "Cuentos de Terramar",
-  "From Up on Poppy Hill": "La colina de las amapolas"
+  "From Up on Poppy Hill": "La colina de las amapolas",
+  "The Tale of the Princess Kaguya": "El cuento de la Princesa Kaguya",
+  "My Neighbors the Yamadas": "Mis vecinos los Yamadas",
+  "The Red Turtle": "La Tortuga Roja",
+  "Earwig and the Witch": "Earwing y la bruja"
 };
 
 //Funcion para evitar interpretacion de html, solo texto, para evitar errores
@@ -144,10 +148,10 @@ async function renderizarFavoritosEnPerfil() {
     const titulo_romaji = p.original_title || p.title;
     const titulo_traducido = titulos_es[p.title] || p.title;
     const posterUrl = obtenerUrlImagenDesdeApi(p);
-
+    
     html += `
       <div class="card col-md-3 p-1 m-2" style="width: 18rem;">
-        <span class="position-absolute end-0 m-2 badge bg-warning text-dark shadow">
+        <span class=" end-0 m-2 badge bg-warning text-dark shadow">
             <i class="bi bi-star-fill"></i> ${escapar(p.rt_score)}
         </span>
         <img src="${posterUrl}" loading="lazy" class="card-img-top" style="height:300px; object-fit:cover;" alt="${escapar(titulo_romaji)} poster">
