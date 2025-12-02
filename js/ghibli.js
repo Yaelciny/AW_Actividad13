@@ -1,64 +1,66 @@
 // Objeto de los titulos para traducirlo al español
 //Se usa el nombre en ingles de la API
 const titulos_es = {
-    "Spirited Away": "El viaje de Chihiro",
-    "My Neighbor Totoro": "Mi vecino Totoro",
-    "Princess Mononoke": "La princesa Mononoke",
-    "Kiki's Delivery Service": "Kiki: Entregas a Domicilio",
-    "Howl's Moving Castle": "El castillo ambulante",
-    "Ponyo": "Ponyo en el acantilado",
-    "Castle in the Sky": "El castillo en el cielo",
-    "The Tale of Princess Kaguya": "La princesa Kaguya",
-    "Grave of the Fireflies": "La tumba de las luciérnagas",
-    "The Wind Rises": "Se levanta el viento",
-    "Whisper of the Heart": "Susurros del corazón",
-    "Only Yesterday": "Recuerdos del ayer",
-    "When Marnie Was There": "Cuando Marnie estuvo allí",
-    "The Cat Returns": "El regreso del gato",
-    "Arrietty": "Arrietty y el mundo de los diminutos",
-    "Tales from Earthsea": "Cuentos de Terramar",
-    "From Up on Poppy Hill": "La colina de las amapolas"
+  "Spirited Away": "El viaje de Chihiro",
+  "My Neighbor Totoro": "Mi vecino Totoro",
+  "Princess Mononoke": "La princesa Mononoke",
+  "Kiki's Delivery Service": "Kiki: Entregas a Domicilio",
+  "Howl's Moving Castle": "El castillo ambulante",
+  "Ponyo": "Ponyo en el acantilado",
+  "Castle in the Sky": "El castillo en el cielo",
+  "The Tale of Princess Kaguya": "La princesa Kaguya",
+  "Grave of the Fireflies": "La tumba de las luciérnagas",
+  "The Wind Rises": "Se levanta el viento",
+  "Whisper of the Heart": "Susurros del corazón",
+  "Only Yesterday": "Recuerdos del ayer",
+  "When Marnie Was There": "Cuando Marnie estuvo allí",
+  "The Cat Returns": "El regreso del gato",
+  "Arrietty": "Arrietty y el mundo de los diminutos",
+  "Tales from Earthsea": "Cuentos de Terramar",
+  "From Up on Poppy Hill": "La colina de las amapolas"
 };
 
 //Funcion para evitar interpretacion de html, solo texto, para evitar errores
 function escapar(texto = '') {
-    return String(texto)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
+  return String(texto)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 async function obtenerPeliculas() {
-    const respuesta = await fetch('https://ghibliapi.vercel.app/films');
-    const datos = await respuesta.json();
-    return datos;
+  const respuesta = await fetch('https://ghibliapi.vercel.app/films');
+  const datos = await respuesta.json();
+  return datos;
 }
 
 //Obtiene imagen mediante el link de la API
 function obtenerUrlImagenDesdeApi(pelicula) {
-    return pelicula.image; 
+  return pelicula.image;
 }
 
 //Carga peliculas en peliculas.html
 function renderizarListadoPeliculas(peliculas) {
-    const contenedor = document.getElementById('listaPeliculas');
-    if (!contenedor) return;
+  const contenedor = document.getElementById('listaPeliculas');
+  if (!contenedor) return;
 
-    const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
-    let html = '';
-    peliculas.forEach(p => {
-        const titulo_romaji = p.original_title || p.title;
-        const titulo_traducido = titulos_es[p.title] || p.title;
-        const posterUrl = obtenerUrlImagenDesdeApi(p);
-        //Validacion de pelicula favorita - pendiente logica de favoritos
-        const esFav = (window.FavoritosGhibli && window.FavoritosGhibli.esFavorita(usuarioLogueado?.email,p.id)) || false;
-        const claseEstrella = esFav ? 'bi-star-fill' : 'bi-star';
+  const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
+  let html = '';
+  peliculas.forEach(p => {
+    const titulo_romaji = p.original_title || p.title;
+    const titulo_traducido = titulos_es[p.title] || p.title;
+    const posterUrl = obtenerUrlImagenDesdeApi(p);
+    //Validacion de pelicula favorita - pendiente logica de favoritos
+    const esFav = (window.FavoritosGhibli && window.FavoritosGhibli.esFavorita(usuarioLogueado?.email, p.id)) || false;
+    const claseEstrella = esFav ? 'bi-star-fill' : 'bi-star';
 
-        html += `
-      <div class="card col-md-3 p-0 m-2" style="width: 18rem;">
-        <small class="m-2 mx-5 text-end">${escapar(p.rt_score)}</small>
+    html += `
+      <div class="card col-md-3 p-1 m-2" style="width: 18rem;">
+        <span class="position-absolute end-0 m-2 badge bg-warning text-dark shadow">
+            <i class="bi bi-star-fill"></i> ${escapar(p.rt_score)}
+        </span>
         <img src="${posterUrl}" loading="lazy" class="card-img-top" style="height:300px; object-fit:cover;" alt="${escapar(titulo_romaji)} poster">
         <div class="card-body">
           <h3>${escapar(titulo_romaji)}</h3>
@@ -71,24 +73,24 @@ function renderizarListadoPeliculas(peliculas) {
         </div>
       </div>
     `;
-    });
-    contenedor.innerHTML = html;
-    botonFavorito();
+  });
+  contenedor.innerHTML = html;
+  botonFavorito();
 }
 
 //Carga de las peliculas destacadas en index.html
 function renderizarCarrusel(peliculas) {
-    const inner = document.querySelector('#carouselExampleCaptions .carousel-inner');
-    if (!inner) return;
-    const slides = peliculas.slice(0, 3);
-    let html = '';
-    slides.forEach((p, idx) => {
-        const activo = idx === 0 ? 'active' : '';
-        const titulo_romaji = p.original_title || p.title;
-        const titulo_traducido = titulos_es[p.title] || p.title;
-        const posterUrl = obtenerUrlImagenDesdeApi(p);
+  const inner = document.querySelector('#carouselExampleCaptions .carousel-inner');
+  if (!inner) return;
+  const slides = peliculas.slice(0, 3);
+  let html = '';
+  slides.forEach((p, idx) => {
+    const activo = idx === 0 ? 'active' : '';
+    const titulo_romaji = p.original_title || p.title;
+    const titulo_traducido = titulos_es[p.title] || p.title;
+    const posterUrl = obtenerUrlImagenDesdeApi(p);
 
-        html += `
+    html += `
       <div class="carousel-item ${activo}">
         <img src="${posterUrl}" loading="lazy" class="d-block} w-auto" alt="${escapar(titulo_romaji)}">
         <div class="carousel-caption d-none d-md-block">
@@ -97,22 +99,22 @@ function renderizarCarrusel(peliculas) {
         </div>
       </div>
     `;
-    });
-    inner.innerHTML = html;
+  });
+  inner.innerHTML = html;
 }
 
 //para obtener favoritos con validacion
 window.FavoritosGhibli = {
-    obtenerFavoritosUsuario(email) {
-        const favs = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
-        return favs[email] || [];
-    },
+  obtenerFavoritosUsuario(email) {
+    const favs = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
+    return favs[email] || [];
+  },
 
-    //esto valida si ya esta en favoritos
-    esFavorita(email, idPeli) {
-        const lista = this.obtenerFavoritosUsuario(email);
-        return lista.includes(idPeli);
-    }
+  //esto valida si ya esta en favoritos
+  esFavorita(email, idPeli) {
+    const lista = this.obtenerFavoritosUsuario(email);
+    return lista.includes(idPeli);
+  }
 };
 
 //Se cargan las peliculas favoritas en perfil
@@ -133,7 +135,7 @@ async function renderizarFavoritosEnPerfil() {
     contenedor.innerHTML = '<p>No tienes películas favoritas aún.</p>';
     return;
   }
-  
+
   const todas = await obtenerPeliculas();
   const favoritas = todas.filter(p => favIds.includes(p.id));
 
@@ -144,13 +146,15 @@ async function renderizarFavoritosEnPerfil() {
     const posterUrl = obtenerUrlImagenDesdeApi(p);
 
     html += `
-      <div class="card col-md-3 p-0 m-2" style="width: 18rem;">
-        <small class="m-2 mx-5 text-end">${escapar(p.rt_score)}</small>
+      <div class="card col-md-3 p-1 m-2" style="width: 18rem;">
+        <span class="position-absolute end-0 m-2 badge bg-warning text-dark shadow">
+            <i class="bi bi-star-fill"></i> ${escapar(p.rt_score)}
+        </span>
         <img src="${posterUrl}" loading="lazy" class="card-img-top" style="height:300px; object-fit:cover;" alt="${escapar(titulo_romaji)} poster">
         <div class="card-body">
             <h3>${escapar(titulo_romaji)}</h3>
             <h4>${escapar(titulo_traducido)}</h4>
-            <p>${escapar(p.description).slice(0,150)}${p.description.length>150?'…':''}</p>
+            <p>${escapar(p.description).slice(0, 150)}${p.description.length > 150 ? '…' : ''}</p>
           <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
             <small class="text-muted">${escapar(p.release_date)}</small>
             <i class="btn btn-warning bi bi-star-fill p-1 fav-toggle" data-id="${p.id}" title="Quitar de favoritos"></i>
@@ -164,62 +168,62 @@ async function renderizarFavoritosEnPerfil() {
 }
 
 //funcion de agregar faoritos
-function guardarFavoritos (id){
+function guardarFavoritos(id) {
   const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
-   if (!usuarioLogueado){
-    alert ('Debes iniciar sesión para agregar favoritos.');
+  if (!usuarioLogueado) {
+    alert('Debes iniciar sesión para agregar favoritos.');
     return;
-   }
+  }
 
-    let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
-    let favUsuario = favoritos[usuarioLogueado.email] || [];
+  let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
+  let favUsuario = favoritos[usuarioLogueado.email] || [];
 
-    //verificamos si ya está en favorito usando el id de la peli
-    if (favUsuario.includes(id)){
-      alert('Ya está en favoritos.');
-      return;
-    }
+  //verificamos si ya está en favorito usando el id de la peli
+  if (favUsuario.includes(id)) {
+    alert('Ya está en favoritos.');
+    return;
+  }
 
-    //en caso de que no, entonces se agrega a la lista en base al id de la peli
-    favUsuario.push(id);
+  //en caso de que no, entonces se agrega a la lista en base al id de la peli
+  favUsuario.push(id);
 
-    //guardamos el favorito en base el usario (su email)
-    favoritos[usuarioLogueado.email] = favUsuario
-    localStorage.setItem('favoritosGhibli',JSON.stringify(favoritos));
-    alert ("¡Favorito agregado con éxito!");
+  //guardamos el favorito en base el usario (su email)
+  favoritos[usuarioLogueado.email] = favUsuario
+  localStorage.setItem('favoritosGhibli', JSON.stringify(favoritos));
+  alert("¡Favorito agregado con éxito!");
 }
 
 //En esta función, básicamente buscamos el id del botón que se presionó para 
 //usarlo en la función de guardarfav
-function botonFavorito(){
+function botonFavorito() {
   const btnFav = document.querySelectorAll(".fav-toggle");
 
-  btnFav.forEach (btn=>{
+  btnFav.forEach(btn => {
     btn.addEventListener('click', () => {
-    btn.classList.remove('bi-star');
-    btn.classList.add('bi-star-fill');
-    //se usa data debido a cómo está definido: 'data-id="${p.id}"'
-    const id = btn.dataset.id;
-    guardarFavoritos(id);
-  });
+      btn.classList.remove('bi-star');
+      btn.classList.add('bi-star-fill');
+      //se usa data debido a cómo está definido: 'data-id="${p.id}"'
+      const id = btn.dataset.id;
+      guardarFavoritos(id);
+    });
   });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const peliculas = await obtenerPeliculas();
+  const peliculas = await obtenerPeliculas();
 
-    if (document.getElementById('listaPeliculas')) {
-        renderizarListadoPeliculas(peliculas);
-    }
+  if (document.getElementById('listaPeliculas')) {
+    renderizarListadoPeliculas(peliculas);
+  }
 
-    if (document.getElementById('carouselExampleCaptions')) {
-        renderizarCarrusel(peliculas);
-    }
+  if (document.getElementById('carouselExampleCaptions')) {
+    renderizarCarrusel(peliculas);
+  }
 
-    if (document.getElementById('listaFavoritos')) {
-        await renderizarFavoritosEnPerfil();
-        // se recarga la vista de favoritos si cambia en otra pagina - pendiente logica de favoritos
-        window.addEventListener('favoritos:cambiaron', () => renderizarFavoritosEnPerfil());
-    }
+  if (document.getElementById('listaFavoritos')) {
+    await renderizarFavoritosEnPerfil();
+    // se recarga la vista de favoritos si cambia en otra pagina - pendiente logica de favoritos
+    window.addEventListener('favoritos:cambiaron', () => renderizarFavoritosEnPerfil());
+  }
 });

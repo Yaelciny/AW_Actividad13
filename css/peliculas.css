@@ -1,11 +1,19 @@
 #navbar{
-    background-color: #212529;
+    background-color: #141414;
     color: rgb(255, 255, 255);
     align-items: end;
 }
 
 #navbarNav h4{
     color: white;
+}
+
+.textos{
+    margin-right: 200px;
+}
+
+img{
+    width: 150px;
 }
 
 header{

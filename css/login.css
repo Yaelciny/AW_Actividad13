@@ -12,21 +12,23 @@ body {
 
 /* quite .container pq rompia el footer */
 
-
+img{
+    width: 150px;
+}
 .card {
-    background: #FFFAEE;
+    background: #FFFDF5;
     width: 380px;
     padding: 50px 40px;
     border-radius: 18px;;
     box-shadow: 0 8px 20px rgba(74, 74, 74, 0.1);
     text-align: center;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #EBE3D3;
     margin: 0 auto; 
-    box-shadow: 0 10px 20px #5d8a7e6f;
+    box-shadow: 0 10px 25px rgba(78, 112, 86, 0.25);
 }
 
 .card h2 {
-    color: #5B4636;
+    color: #3D3A36;
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 25px;
@@ -38,24 +40,25 @@ body {
      width: 100%;
     padding: 15px;
     background: #FFFFFF;
-    border: 2px solid #B8C8B5;
+    border: 2px solid #D1D9D3;
     border-radius: 10px;
     margin-bottom: 20px;
     font-size: 16px;
     outline: none;
     transition: all 0.3s ease; /*transición suave al enfocar*/
+    color: #5A5A5A;
 }
 
 .form-control:focus {
-    border-color: #3e7838;
-    box-shadow: 0 0 4px rgb(60, 135, 100);
+    border-color: #4E7056;
+    box-shadow: 0 0 8px rgba(78, 112, 86, 0.3);
 }
 
 #btnIniciarSesion {
      width: 100%;
     padding: 13px;
     font-size: 16px;
-    background-color: #5E8A7E;
+    background-color: #4E7056;
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
@@ -65,7 +68,7 @@ body {
 }
 
 #btnIniciarSesion:hover {
-     background-color: #3F6D63;
+     background-color: #3B5742;
     transform: scale(1.02);
 }
 
@@ -73,13 +76,15 @@ body {
 a {
     display: block;
     margin-top: 18px;
-    color: #C59E5F;
+    color: #A67C52;
     font-size: 14px;
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: #8C6642;
     text-decoration: underline;
 }
 
