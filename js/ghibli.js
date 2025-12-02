@@ -58,7 +58,7 @@ function renderizarListadoPeliculas(peliculas) {
 
     html += `
       <div class="card col-md-3 p-1 m-2" style="width: 18rem;">
-        <span class="position-absolute end-0 m-2 badge bg-warning text-dark shadow">
+        <span class=" end-0 m-2 badge bg-warning text-dark shadow">
             <i class="bi bi-star-fill"></i> ${escapar(p.rt_score)}
         </span>
         <img src="${posterUrl}" loading="lazy" class="card-img-top" style="height:300px; object-fit:cover;" alt="${escapar(titulo_romaji)} poster">
