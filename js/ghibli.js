@@ -169,6 +169,14 @@ async function renderizarFavoritosEnPerfil() {
   });
 
   contenedor.innerHTML = html;
+
+  //para controlar el click y se elimine
+  document.querySelectorAll(".fav-toggle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id = btn.dataset.id;
+    eliminarFavorito(id);
+  });
+});
 }
 
 //funcion de agregar faoritos
@@ -212,6 +220,24 @@ function botonFavorito() {
       guardarFavoritos(id);
     });
   });
+}
+
+function eliminarFavorito (id){
+  const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
+
+  let favoritos = JSON.parse(localStorage.getItem('favoritosGhibli')) || {};
+  let favUsuario = favoritos[usuarioLogueado.email] || [];
+
+  //aqui se elimina la pelicula con ese id
+  favUsuario = favUsuario.filter(peli => String(peli) !== String(id));
+
+  //guardamos el favorito actualizado
+  favoritos[usuarioLogueado.email] = favUsuario
+  localStorage.setItem('favoritosGhibli', JSON.stringify(favoritos));
+  alert("¡Favorito eliminado con éxito!");
+
+  //escuchar el evento
+  window.dispatchEvent(new Event('favoritos:cambiaron'));
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
